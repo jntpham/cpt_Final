@@ -17,7 +17,7 @@ class Predict(Resource):
             data = request.get_json()
             passenger_data = pd.DataFrame(data, index=[0])
             
-            # Preprocess the new passenger data
+            # Preprocesssing
             passenger_data['sex'] = passenger_data['sex'].apply(lambda x: 1 if x == 'male' else 0)
             passenger_data['alone'] = passenger_data['alone'].apply(lambda x: 1 if x == True else 0)
             onehot = enc.transform(passenger_data[['embarked']]).toarray()
