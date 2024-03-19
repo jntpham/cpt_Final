@@ -29,7 +29,7 @@ class Predict(Resource):
             survival_prob = logreg.predict_proba(passenger_data)[:, 1]
             death_prob = 1 - survival_prob
 
-            return {'death_probability': float(death_prob), 'survival_probability': float(survival_prob)}, 200
+            return {'death_percentage': float(death_prob * 100), 'survivability_percentage': float(survival_prob * 100)}, 200
         except Exception as e:
             return {'error': str(e)}, 400
 
@@ -60,8 +60,6 @@ y = titanic_data['survived']
 # Train the logistic regression model
 logreg = LogisticRegression()
 logreg.fit(X, y)
-
-app.register_blueprint(titanic_api)
 
 if __name__ == "__main__":
     app.run(debug=True)
