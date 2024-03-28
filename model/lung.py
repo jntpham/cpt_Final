@@ -16,14 +16,14 @@ df = pd.read_csv(csv_file_path)
 class CancerPredict(Resource):
     def __init__(self):
         # Select features and target
-        self.categorical_features = ['GENDER', 'SMOKING', 'ANXIETY']  # Categorical features
-        self.numeric_features = ['AGE']  # Numeric feature(s)
-        self.target = 'LUNG_CANCER'  # Target variable indicating lung cancer presence
+        self.categorical_features = ['GENDER', 'SMOKING', 'ANXIETY']  
+        self.numeric_features = ['AGE']  
+        self.target = 'LUNG_CANCER'  
 
         # One-hot encode categorical features
         encoder = OneHotEncoder(drop='first')
-        encoder.fit(df[self.categorical_features])  # Fit the encoder on the entire dataset
-        self.encoder = encoder  # Store the encoder for later use
+        encoder.fit(df[self.categorical_features])  
+        self.encoder = encoder  
 
         # Preprocess input data
         self.X_numeric = df[self.numeric_features]
