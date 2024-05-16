@@ -12,7 +12,6 @@ from __init__ import app, db, cors  # Definitions initialization
 # setup APIss
 from api.user import user_api # Blueprint import api definition
 from api.player import player_api
-from api.titanic import titanic_api
 # database migrations
 from model.users import initUsers
 from model.players import initPlayers
